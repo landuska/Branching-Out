@@ -4,9 +4,12 @@ import json
 def load_file():
     """ Load the users file and return it as a dictionary """
 
-    with open("users.json", "r") as file:
-        users = json.load(file)
-        return users
+    try:
+        with open("users.json", "r") as file:
+            users = json.load(file)
+            return users
+    except FileNotFoundError:
+        print("File users.json not found")
 
 
 def filter_users_by_key(key, value):
